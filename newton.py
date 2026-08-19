@@ -30,7 +30,7 @@ def newtons_method(func, x, epsilon=0.001):
     curr_val = x
     next_val = float("-inf")
     difference = float("inf")
-    # while the difference is small
+    # while the difference is large
     while difference > epsilon:
         first_derivative = derivative(func, curr_val, epsilon)
         second_derivative = derivative_second(func, curr_val, epsilon)
@@ -39,6 +39,5 @@ def newtons_method(func, x, epsilon=0.001):
         difference = abs(next_val - curr_val)
         curr_val = next_val
         next_val = float("-inf")
-        # print(type(curr_val))
 
     return {'new x': curr_val, 'value': func(curr_val)}
