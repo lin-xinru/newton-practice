@@ -1,5 +1,5 @@
 def f_x(x):
-    return x**3 + (2 * x**2) + 1
+    return ((x**4)/4)-x**3-x# x**3 + (2 * x**2) + 1
 
 
 def derivative(func, x, epsilon=0.001):
@@ -28,16 +28,14 @@ def newtons_method(func, x, epsilon=0.001):
     """
 
     curr_val = x
-    next_val = float("-inf")
-    difference = float("inf")
+    next_val = x - (derivative(func, x, epsilon) / derivative_second(func, x, epsilon))
     # while the difference is large
-    while difference > epsilon:
+    while abs(next_val-curr_val) > epsilon:
         first_derivative = derivative(func, curr_val, epsilon)
         second_derivative = derivative_second(func, curr_val, epsilon)
 
         next_val = curr_val - (first_derivative / second_derivative)
-        difference = abs(next_val - curr_val)
         curr_val = next_val
-        next_val = float("-inf")
 
     return {'new x': curr_val, 'value': func(curr_val)}
+
