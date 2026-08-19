@@ -41,4 +41,4 @@ def newtons_method(func, x, epsilon=0.001):
         next_val = float("-inf")
         # print(type(curr_val))
 
-    return curr_val
+    return {'new x': curr_val, 'value': func(curr_val)}
